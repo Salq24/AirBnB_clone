@@ -3,7 +3,6 @@
 
 import cmd
 import sys
-from models.__init__ import storage
 from models.base_model import BaseModel
 from models.city import City
 from models.amenity import Amenity
@@ -12,9 +11,11 @@ from models.state import State
 from models.user import User
 from models.review import Review
 from models.engine.file_storage import FileStorage
+from models.__init__ import storage
 
 class HBNBCommand(cmd.Cmd):
     """commandline for the project, HBNB"""
+
     prompt = "(hbnb)"
 
     def do_EOF(self, arg):
@@ -151,6 +152,6 @@ class HBNBCommand(cmd.Cmd):
         setattr(val_obj, arg[2], arg[3])
         val_obj.save()
 
-    if __name__ == '__main__':
-        """prevents the modules running on import"""
-        HBNBCommand().cmdloop()
+if __name__ == '__main__':
+    """prevents the modules running on import"""
+    HBNBCommand().cmdloop()

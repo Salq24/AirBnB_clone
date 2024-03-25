@@ -2,7 +2,7 @@
 """This houses the class BaseModel that defines all common methods
 for other classes"""
 
-from models import storage
+import models
 from datetime import datetime
 from uuid import uuid4
 
@@ -26,7 +26,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """Returns str rep"""
@@ -45,4 +45,4 @@ class BaseModel:
     def save(self):
         """updates the public instance attr"""
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
