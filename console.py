@@ -13,6 +13,7 @@ from models.review import Review
 from models.engine.file_storage import FileStorage
 from models.__init__ import storage
 
+
 class HBNBCommand(cmd.Cmd):
     """commandline for the project, HBNB"""
 
@@ -33,20 +34,21 @@ class HBNBCommand(cmd.Cmd):
     def default(self, arg):
         """When input is invalid, it overrides"""
         cargs = {"show": self.do_show,
-                "all": self.do_all,
-                "destroy": self.do_destroy}
+                 "all": self.do_all,
+                 "destroy": self.do_destroy}
 
         arg = (arg.replace("(", ".").replace(")", ".").replace('"', "")
-                .replace(",", "").split("."))
+               .replace(",", "").split("."))
         try:
             cmd_new = arg[0] + " " + arg[2]
             func_new = cargs[arg[1]]
             func_new(cmd_new)
-        except:
+        except ValueError:
             print("*** Unknown syntax: {}".format(arg))
 
     def do_create(self, arg):
-        """creates a new instance of the commandline interpreter and prints id"""
+        """creates a new instance of the commandline interpreter
+         and prints id"""
         if len(arg) == 0:
             print("** class name missing **")
             return
@@ -151,6 +153,7 @@ class HBNBCommand(cmd.Cmd):
 
         setattr(val_obj, arg[2], arg[3])
         val_obj.save()
+
 
 if __name__ == '__main__':
     """prevents the modules running on import"""
