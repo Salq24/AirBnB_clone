@@ -15,6 +15,10 @@ class TestAmenity(unittest.TestCase):
         self.resetStorage()
         pass
 
+    def setUp(self):
+        """Sets up the test methods."""
+        pass
+
     def testattr(self):
         """Tests for the attributes of Amenity instance"""
         self.assertTrue(hasattr(self.amenity, "id"))
