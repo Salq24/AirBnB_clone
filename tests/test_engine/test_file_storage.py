@@ -10,7 +10,6 @@ from models.engine.file_storage import FileStorage
 from models import *
 
 
-
 class TestFileStorage(unittest.TestCase):
     """
     Testcase for file storage
@@ -35,6 +34,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNotNone(obj)
         self.assertEqual(type(obj), dict)
         self.assertIs(obj, storage._FileStorage__objects)
+
 
 if "__main__" == __name__:
     unittest.main()
