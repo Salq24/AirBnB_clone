@@ -8,6 +8,7 @@ from datetime import datetime
 from time import sleep
 from models.user import User
 
+
 class TestUser(unittest.TestCase):
     """Tests for the User class"""
     def destroy(self):
@@ -19,7 +20,7 @@ class TestUser(unittest.TestCase):
         """Sets up the test methods"""
         pass
 
-     def resetStorage(self):
+    def resetStorage(self):
         """Resets FileStorage data."""
         FileStorage._FileStorage__objects = {}
         if os.path.isfile(FileStorage._FileStorage__file_path):
@@ -33,7 +34,6 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(st, User)
         self.assertTrue(issubclass(type(st), BaseModel))
 
-    if __name__ == "__main__":
-        unittest.main()
 
-
+if __name__ == "__main__":
+    unittest.main()

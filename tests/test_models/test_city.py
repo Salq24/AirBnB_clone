@@ -8,6 +8,7 @@ from datetime import datetime
 from time import sleep
 from models.amenity import Amenity
 
+
 class TestCity(unittest.TestCase):
     """Tests for the City class"""
     def destroy(self):
@@ -36,5 +37,3 @@ class TestCity(unittest.TestCase):
 
     if __name__ == "__main__":
         unittest.main()
-
-

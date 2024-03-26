@@ -8,6 +8,7 @@ from datetime import datetime
 from time import sleep
 from models.place import Place
 
+
 class TestPlace(unittest.TestCase):
     """Tests for the Place class"""
     def destroy(self):
@@ -19,7 +20,7 @@ class TestPlace(unittest.TestCase):
         """Sets up the test methods"""
         pass
 
-     def resetStorage(self):
+    def resetStorage(self):
         """Resets FileStorage data."""
         FileStorage._FileStorage__objects = {}
         if os.path.isfile(FileStorage._FileStorage__file_path):
@@ -35,5 +36,3 @@ class TestPlace(unittest.TestCase):
 
     if __name__ == "__main__":
         unittest.main()
-
-

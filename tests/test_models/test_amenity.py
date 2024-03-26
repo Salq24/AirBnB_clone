@@ -8,6 +8,7 @@ from datetime import datetime
 from time import sleep
 from models.amenity import Amenity
 
+
 class TestAmenity(unittest.TestCase):
     """Tests for the Amenity class"""
     def destroy(self):
@@ -31,9 +32,9 @@ class TestAmenity(unittest.TestCase):
 
     def teststr(self):
         """Tests the string format of Amenity"""
-        st = "[{}] ({}) {}".format(self.amenity.__class__.__name__, 
-                                    str(self.amenity.id), 
-                                    self.amenity.__dict__)
+        st = "[{}] ({}) {}".format(self.amenity.__class__.__name__,
+                                   str(self.amenity.id),
+                                   self.amenity.__dict__)
         self.assertEqual(print(st), print(self.amenity))
 
     def test_amenity_inst(self):
@@ -46,5 +47,3 @@ class TestAmenity(unittest.TestCase):
 
     if __name__ == "__main__":
         unittest.main()
-
-
