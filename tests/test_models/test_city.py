@@ -6,7 +6,7 @@ import unittest
 import models
 from datetime import datetime
 from time import sleep
-from models.amenity import Amenity
+from models.city import City
 
 
 class TestCity(unittest.TestCase):
@@ -20,7 +20,7 @@ class TestCity(unittest.TestCase):
         """Sets up the test methods"""
         pass
 
-    def test_docstr(self):
+    def test_str(self):
         """Tests the string format of City"""
         self.assertIsNot(City.__doc__, None,
                          "City needs a docstring")

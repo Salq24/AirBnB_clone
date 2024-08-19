@@ -20,11 +20,6 @@ class TestUser(unittest.TestCase):
         """Sets up the test methods"""
         pass
 
-    def resetStorage(self):
-        """Resets FileStorage data."""
-        FileStorage._FileStorage__objects = {}
-        if os.path.isfile(FileStorage._FileStorage__file_path):
-            os.remove(FileStorage._FileStorage__file_path)
 
     def test_user_inst(self):
         """Tests for user class instantiation"""
