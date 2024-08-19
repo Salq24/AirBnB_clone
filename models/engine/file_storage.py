@@ -30,7 +30,7 @@ class FileStorage:
         """ serializes __objects to the JSON file"""
         m_dict = {}
         for k, v in FileStorage.__objects.items():
-            m_dict[key] = v.to_dict().copy()
+            m_dict[k] = v.to_dict().copy()
         with open(FileStorage.__file_path, "w") as f:
             json.dump(m_dict, f)
 
