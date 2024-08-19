@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """File Storage class definition"""
 
+import importlib
+import os
 import json
+import re
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -34,15 +37,17 @@ class FileStorage:
         with open(FileStorage.__file_path, "w") as f:
             json.dump(m_dict, f)
 
-
+    
     def reload(self):
-        """Reloads the stored objects"""
-        try:
-            with open(FileStorage.__file_path, mode='r') as f:
-                m_dict = json.load(f)
-            for k, v in m_dict.items():
-                class_name = v.get(__class__)
-                obj = eval(class_name + '(**v)')
-                FileStorage.__objects[k] = obj
-        except FileNotFoundError:
-            pass
+        """Deserialize the JSON file __file_path to __objects, if it exists."""
+        if (os.path.isfile(self.__file_path)
+                and os.path.getsize(self.__file_path) > 0):
+            with open(self.__file_path, 'r') as f:
+                self.__objects = {k: self.get_class(k.split(".")[0])(**v)
+                                  for k, v in json.load(f).items()}
+
+    def get_class(self, name):
+        """ returns a class from models module using its name"""
+        sub_module = re.sub('(?!^)([A-Z]+)', r'_\1', name).lower()
+        module = importlib.import_module(f"models.{sub_module}")
+        return getattr(module, name)
